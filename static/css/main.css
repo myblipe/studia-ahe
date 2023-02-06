@@ -37,13 +37,6 @@ body {
   background-image: repeat-y;
 }
 
-.bg img {
-  position: fixed;
-  max-width: none;
-  -o-object-fit: cover;
-  object-fit: cover;
-}
-
 header {
   position: relative;
   display: -webkit-box;

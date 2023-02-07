@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="pl">
+    <!DOCTYPE html>
+    <html lang="pl">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,18 +38,22 @@
             </div>
     </form>
     <div class="weather-info">
-    {% if weather_data.cod == "404" %}
+    {% if city == "" %}
+      <h1>Musisz wpisać nazwę miasta</h1>
+    {% elif weather_data.cod == "404" %}
         <h1>Nie znaleziono danych pogodowych dla tego miasta</h1>
     {% elif weather_data.cod == "400" %}
         <h1>Musisz wpisać nazwę miasta</h1>
-    {% else %}
+    {% elif weather_data['cod'] == 200 %}
         <h1>Pogoda w {{weather_data['name']}} ({{weather_data['sys']['country']}})</h1>
         <p><img src="https://openweathermap.org/img/wn/{{weather_data['weather'][0]['icon']}}.png" alt="Ikona pogody"> {{weather_data['weather'][0]['description']}}</p>
         <p>Temperatura: {{weather_data['main']['temp']}} °C</p>
         <p>Temperatura odczuwalna {{weather_data['main']['feels_like']}} °C</p>
         <p>Prędkość wiatru: {{weather_data['wind']['speed']}} m/s</p>
         <p>Ciśnienie: {{weather_data['main']['pressure']}} hPa</p>
-        {% endif %}
+    {% else %}
+    <h1>Nieznany błąd, spróbuj ponownie później.</h1>
+    {% endif %}
     </div>
 </div>
 </div>
